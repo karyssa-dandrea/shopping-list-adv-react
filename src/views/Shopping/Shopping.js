@@ -1,4 +1,7 @@
 import React from 'react';
+import { useReducer } from 'react';
+import AddItem from '../../components/AddItem/AddItem';
+import ItemList from '../../components/Item/ItemList';
 
 const initialItems = [
   { id: 0, text: 'Oatmilk', done: false },
@@ -36,5 +39,35 @@ function itemsReducer(items, action) {
 }
 
 export default function Shopping() {
-  return <div>Shopping</div>;
+  const [items, dispatch] = useReducer(itemsReducer, initialItems);
+
+  const addItem = (text) => {
+    dispatch({
+      type: 'add',
+      id: items.length + 1,
+      text,
+    });
+  };
+
+  const updateItem = (task) => {
+    dispatch({
+      type: 'update',
+      task,
+    });
+  };
+
+  const deleteItem = (taskId) => {
+    dispatch({
+      type: 'delete',
+      id: taskId,
+    });
+  };
+
+  return (
+    <div>
+      Shopping
+      <AddItem addItem={addItem} />
+      <ItemList items={items} updateItem={updateItem} deleteItem={deleteItem} />
+    </div>
+  );
 }
