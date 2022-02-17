@@ -16,7 +16,7 @@ export default function Item({ item, updateItem, deleteItem }) {
             });
           }}
         />
-        <button type="button" onClick={() => setEditing(false)}>
+        <button type="button" aria-label="Save" onClick={() => setEditing(false)}>
           Save Changes
         </button>
       </div>
@@ -25,7 +25,7 @@ export default function Item({ item, updateItem, deleteItem }) {
     itemContent = (
       <div>
         <p>{item.text}</p>
-        <button type="button" onClick={() => setEditing(true)}>
+        <button type="button" aria-label={`Edit ${item.text} `} onClick={() => setEditing(true)}>
           Edit
         </button>
       </div>

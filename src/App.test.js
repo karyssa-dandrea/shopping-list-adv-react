@@ -18,4 +18,9 @@ test('test for behavioral and components', () => {
   const deleteButton = screen.getByLabelText('Delete Jalapenos');
   userEvent.click(deleteButton);
   expect(screen.queryByText(' Jalapenos ')).not.toBeInTheDocument();
+
+  const editButton = screen.getByLabelText('Edit Potatoes');
+  userEvent.click(editButton);
+  const saveEditButton = screen.getByLabelText('Save');
+  userEvent.click(saveEditButton);
 });
