@@ -1,71 +1,14 @@
 import React from 'react';
-import { useReducer } from 'react';
 import AddItem from '../../components/AddItem/AddItem';
 import ItemList from '../../components/Item/ItemList';
-
-const initialItems = [
-  { id: 0, text: 'Oatmilk', done: false },
-  { id: 1, text: 'Jalapenos', done: false },
-  { id: 2, text: 'Potatoes', done: false },
-];
-
-function itemsReducer(items, action) {
-  switch (action.type) {
-    case 'add': {
-      return [
-        ...items,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
-    }
-    case 'update': {
-      return items.map((item) => {
-        if (item.id === action.task.id) {
-          return action.task;
-        }
-        return item;
-      });
-    }
-    case 'delete': {
-      return items.filter((item) => item.id !== action.id);
-    }
-    default: {
-      throw Error(`Unknown action: ${action.type}`);
-    }
-  }
-}
+import { useList } from '../../context/ListContext';
 
 export default function Shopping() {
-  const [items, dispatch] = useReducer(itemsReducer, initialItems);
-
-  const addItem = (text) => {
-    dispatch({
-      type: 'add',
-      id: items.length + 1,
-      text,
-    });
-  };
-
-  const updateItem = (task) => {
-    dispatch({
-      type: 'update',
-      task,
-    });
-  };
-
-  const deleteItem = (taskId) => {
-    dispatch({
-      type: 'delete',
-      id: taskId,
-    });
-  };
+  const { items, addItem, updateItem, deleteItem } = useList();
 
   return (
     <div>
-      Shopping
+      Shopping List!
       <AddItem addItem={addItem} />
       <ItemList items={items} updateItem={updateItem} deleteItem={deleteItem} />
     </div>
