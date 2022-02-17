@@ -44,7 +44,7 @@ export default function Item({ item, updateItem, deleteItem }) {
         }}
       />
       {itemContent}
-      <button type="button" onClick={() => deleteItem(item.id)}>
+      <button type="button" aria-label={`Delete ${item.text} `} onClick={() => deleteItem(item.id)}>
         Delete
       </button>
     </div>

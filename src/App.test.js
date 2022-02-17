@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import userEvent from '@testing-library/user-event';
-import Shopping from './views/Shopping/Shopping';
 
 test('test for behavioral and components', () => {
-  render(<Shopping />);
+  render(<App />);
 
   const itemInput = screen.getByRole('textbox');
   expect(itemInput).toBeInTheDocument();
@@ -15,4 +14,8 @@ test('test for behavioral and components', () => {
   const addButton = screen.getByRole('button', { name: 'Add' });
   expect(addButton).toBeInTheDocument();
   userEvent.click(addButton);
+
+  const deleteButton = screen.getByLabelText('Delete Jalapenos');
+  userEvent.click(deleteButton);
+  expect(screen.queryByText(' Jalapenos ')).not.toBeInTheDocument();
 });
