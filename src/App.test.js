@@ -17,7 +17,7 @@ test('test for adding, editing and deleting in list', () => {
 
   const deleteButton = screen.getByLabelText('Delete Jalapenos');
   userEvent.click(deleteButton);
-  expect(screen.queryByText(' Jalapenos ')).not.toBeInTheDocument();
+  expect(screen.queryByText(/Jalapenos/i)).toBeNull();
 
   const editButton = screen.getByLabelText('Edit Potatoes');
   userEvent.click(editButton);
