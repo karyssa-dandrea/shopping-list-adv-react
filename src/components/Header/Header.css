@@ -1,0 +1,13 @@
+header {
+  background-color: #0d0628;
+  color: #cce6f4;
+}
+
+.header-list {
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: right;
+  gap: 20px;
+  font-size: 1.2rem;
+}

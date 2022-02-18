@@ -3,7 +3,7 @@ import Item from './Item';
 
 export default function ItemList({ items, deleteItem, updateItem }) {
   return (
-    <div>
+    <div className="items-list">
       <ul>
         {items.map((item) => (
           <li key={item.id} className="list">

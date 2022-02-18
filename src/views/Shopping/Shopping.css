@@ -1,0 +1,19 @@
+body {
+  background-color: #616163;
+}
+
+.add-item {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  padding: 30px;
+}
+
+.items-list {
+  display: flex;
+  border: 3px solid #7ec4cf;
+  justify-content: center;
+  width: 500px;
+  margin: auto;
+  background-color: #cce6f4;
+}

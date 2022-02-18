@@ -11,7 +11,7 @@ export default function AddItem({ addItem }) {
   };
 
   return (
-    <div>
+    <div className="add-item">
       <form onSubmit={handleSubmit}>
         Add To List:
         <input
