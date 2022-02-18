@@ -1,11 +1,17 @@
 import React from 'react';
-
-const initialItems = [
-  { id: 0, text: 'Oatmilk', done: false },
-  { id: 1, text: 'Jalapenos', done: false },
-  { id: 2, text: 'Potatoes', done: false },
-];
+import AddItem from '../../components/AddItem/AddItem';
+import ItemList from '../../components/Item/ItemList';
+import { useList } from '../../context/ListContext';
+import './Shopping.css';
 
 export default function Shopping() {
-  return <div>Shopping</div>;
+  const { items, addItem, updateItem, deleteItem } = useList();
+
+  return (
+    <div>
+      <h2>Shopping List:</h2>
+      <AddItem addItem={addItem} />
+      <ItemList items={items} updateItem={updateItem} deleteItem={deleteItem} />
+    </div>
+  );
 }
